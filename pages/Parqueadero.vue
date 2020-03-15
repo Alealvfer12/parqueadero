@@ -53,21 +53,21 @@
 
               <b-form-group label="Fecha" label-for="FechaDeIngreso">
                 <b-form-input
-                  type = date
+                  type = text            
                   class="form-control"
                   v-model="vehiculo.FechaDeIngreso"
                   id="fechaDeIngreso"
-                  placeholder="Ingrese la fecha de ingreso de su vehiculo" required
+                  placeholder="AAAA-MM-DD" required
                 />
               </b-form-group>
 
               <b-form-group label="Hora" label-for="HoraDeIngreso">
                 <b-form-input
-                  type = time
+                  type = text
                   class="form-control"
                   v-model="vehiculo.HoraDeIngreso"
                   id="horaDeIngreso"
-                  placeholder="Ingrese la hora de ingreso de su vehiculo" required
+                  placeholder="HH:MM" required
                 />
               </b-form-group>
 
@@ -88,7 +88,7 @@
               <b-button size="sm" @click="eliminarVehiculo(row)" class="mr-2" variant="danger">Eliminar</b-button>
               <br>
               <br>
-              <b-button size="sm" @click="makeToast('dark')" class="mr-2" variant="warning">Dar Salida</b-button>
+              <b-button size="sm" @click="makeToast(row)" class="mr-2" variant="warning">Dar Salida</b-button>
             </template>
           </b-table>
         </b-col>

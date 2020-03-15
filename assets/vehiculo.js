@@ -115,25 +115,26 @@ export default {
         },
         
         makeToast( { item }, variant = null ){
+            
             let vehiculos = this.lista_vehiculo.find(
                 vehiculo => vehiculo.placa == item.placa
             );
             let fechaActual = new Date();
             let srt = vehiculos.FechaDeIngreso.split("-")
             let hur = vehiculos.HoraDeIngreso.split(":")
-            let fecha = new Date(srt[0], (srt[1] - 1), srt[2], hur[0], hur[1]);
-             let fechas = ((this.fechaActual.getTime() - this.fecha.getTime())/1000*3600)
-                 
+            let date = new Date(srt[0], (srt[1] - 1), srt[2], hur[0], hur[1]);
+            var fechas = (fechaActual.getTime() - date.getTime())/(1000 * 3600);
+            this.fechas = Math.round(fechas);
+            this.enEdicion = true;
+            this.vehiculo = Object.assign({}, vehiculos);
+            this.saveLocalStorage();            
             this.$bvToast.toast('Tiempo que se demoro en el parqueadero :'+ this.fechas 
             + '  Precio que debe pagar:' + this.calcular(vehiculos.tipo), {
                 tittle: 'Notificacion',
                 variant: variant,
-                solid: true
-
-                
+                solid: true         
             })
-            this.enEdicion = true;
-                this.vehiculo = Object.assign({}, vehiculos);
+           
                 this.saveLocalStorage();
 
         }
